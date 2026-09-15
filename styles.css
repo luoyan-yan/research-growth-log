@@ -663,6 +663,52 @@ h2 {
   color: var(--muted);
 }
 
+.qr-box {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(85, 66, 98, 0.09);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+}
+
+.qr-copy h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.qr-copy p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.qr-url {
+  word-break: break-all;
+  color: var(--plum) !important;
+  font-weight: 600;
+}
+
+a.qr-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin-top: 4px;
+}
+
+.qr-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 16px;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid rgba(85, 66, 98, 0.1);
+}
+
 .share-box {
   margin-top: 20px;
   padding: 18px;
@@ -762,6 +808,17 @@ h2 {
   .hero-actions > *,
   .form-actions > * {
     width: 100%;
+  }
+
+  .qr-box {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .qr-image {
+    width: 160px;
+    height: 160px;
   }
 
   .hero h1 {

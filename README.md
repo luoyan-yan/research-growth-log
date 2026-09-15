@@ -36,6 +36,12 @@ http://127.0.0.1:5500/
 - `styles.css`：视觉样式与响应式布局
 - `app.js`：数据处理、保存逻辑和交互逻辑
 
+## 公开试用与扫码
+
+- 应用地址：https://luoyan-yan.github.io/research-growth-log/
+- 课堂投影扫码页：https://luoyan-yan.github.io/research-growth-log/share.html
+- 本地二维码图片：`qr.png`
+
 ## GitHub Pages 发布
 
 项目是纯静态网页，根目录已有 `index.html`，CSS 与 JavaScript 均通过相对路径加载，不依赖后端服务。
