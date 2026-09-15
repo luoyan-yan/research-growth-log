@@ -317,13 +317,14 @@ function renderWeeklyReview(entries) {
   const blockerCount = document.querySelector('#blocker-count');
   const nextStepCount = document.querySelector('#next-step-count');
   const demoLabel = document.querySelector('#demo-label');
+  const modeLabel = entries.some((entry) => entry.isDemo) ? '示例模式' : '真实记录';
 
   if (dayCount) dayCount.textContent = `${summary.totalDays} 天`;
   if (progressCount) progressCount.textContent = `${summary.totalDays} 天`;
   if (ideaCount) ideaCount.textContent = `${summary.ideas.length} 条`;
   if (blockerCount) blockerCount.textContent = `${Math.max(summary.blockers.length, 0)} 个`;
   if (nextStepCount) nextStepCount.textContent = `${summary.nextSteps.length} 个`;
-  if (demoLabel) demoLabel.textContent = entries.some((entry) => entry.isDemo) ? '示例模式' : '真实记录';
+  if (demoLabel) demoLabel.textContent = modeLabel;
 
   const wrapList = (list, targetId) => {
     const target = document.querySelector(targetId);
@@ -539,13 +540,14 @@ function clearAllPersonalData() {
   const confirmFirst = window.confirm('是否确认清空所有个人记录？');
   if (!confirmFirst) return;
 
-  const secondConfirm = window.confirm('这将会删除本地保存的所有科研记录，仍然要继续吗？');
+  const secondConfirm = window.confirm('这将会删除本地保存的所有个人科研记录，示例数据会保留，仍然要继续吗？');
   if (!secondConfirm) return;
 
-  saveEntries([]);
+  const remainingEntries = loadEntries().filter((entry) => entry.isDemo);
+  saveEntries(remainingEntries);
   refreshDashboard();
   const feedback = document.querySelector('#form-feedback');
-  if (feedback) feedback.textContent = '个人数据已清空。';
+  if (feedback) feedback.textContent = '个人数据已清空，示例数据保留在本地。';
 }
 
 async function copyWeeklyReport() {
