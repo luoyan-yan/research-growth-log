@@ -163,7 +163,7 @@ button {
 }
 
 .section-shell {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.18);
   border: 1px solid rgba(92, 75, 101, 0.08);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-soft);
@@ -320,6 +320,32 @@ button {
   min-height: 420px;
   align-content: center;
   z-index: 1;
+}
+
+.hero-cards::before,
+.hero-cards::after {
+  content: "";
+  position: absolute;
+  border-radius: 58% 42% 49% 51% / 58% 41% 59% 42%;
+  background: linear-gradient(135deg, rgba(203,188,229,0.36), rgba(255,255,255,0.02));
+  border: 1px solid rgba(91,66,117,0.08);
+  pointer-events: none;
+}
+
+.hero-cards::before {
+  width: 180px;
+  height: 240px;
+  right: 22%;
+  top: -12px;
+  transform: rotate(18deg);
+}
+
+.hero-cards::after {
+  width: 200px;
+  height: 180px;
+  right: 4%;
+  bottom: -14px;
+  transform: rotate(-18deg);
 }
 
 .botanical-glow {
@@ -499,6 +525,12 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.entry-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(93, 72, 104, 0.08);
 }
 
 .entry-card.is-demo {
