@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="科研生长日志：记录真实进展，不用结果定义今天。"
+    />
+    <title>科研生长日志</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="browser-dots" aria-hidden="true">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <div class="address-bar" aria-label="地址栏">localhost</div>
+        <div class="window-actions" aria-label="窗口操作">
+          <button type="button" class="icon-button" aria-label="搜索">⌕</button>
+          <button type="button" class="icon-button" aria-label="分享">✦</button>
+          <button type="button" class="icon-button" aria-label="更多">＋</button>
+        </div>
+      </header>
+
+      <main class="app">
+        <section class="hero section-shell">
+          <div class="hero-copy">
+            <div class="pill">给正在摸索中的研究生</div>
+            <h1>科研生长日志</h1>
+            <p class="tagline">记录进展，不用结果定义今天</p>
+            <p class="lede">
+              阅读到哪一页、排查到哪个报错、运行了哪次实验、理解了哪个概念，
+              都属于真实的科研进展。把今天的小确实留在这里，下一步也会更清楚。
+            </p>
+            <div class="hero-actions">
+              <button type="button" class="primary-btn" data-scroll-target="#log-form">记录今天</button>
+              <button type="button" class="secondary-btn" data-scroll-target="#weekly-review">查看本周</button>
+            </div>
+          </div>
+
+          <div class="hero-cards" aria-label="周概览卡片">
+            <div class="botanical-glow" aria-hidden="true"></div>
+            <div class="mini-card soft-rose">
+              <span class="card-label">本周进展</span>
+              <strong id="weekly-progress-count">0 天</strong>
+              <small>真实记录与行动</small>
+            </div>
+            <div class="mini-card soft-lavender">
+              <span class="card-label">新Idea</span>
+              <strong id="idea-count">0 条</strong>
+              <small>正在冒出的想法</small>
+            </div>
+            <div class="mini-card soft-sage">
+              <span class="card-label">待解决问题</span>
+              <strong id="blocker-count">0 个</strong>
+              <small>没有被放大成失败</small>
+            </div>
+            <div class="mini-card soft-ice">
+              <span class="card-label">明日第一步</span>
+              <strong id="next-step-count">0 个</strong>
+              <small>清楚地从今天出发</small>
+            </div>
+          </div>
+        </section>
+
+        <nav class="quick-nav" aria-label="页面导航">
+          <button type="button" class="nav-pill is-active" data-scroll-target="#log-form">今日记录</button>
+          <button type="button" class="nav-pill" data-scroll-target="#weekly-review">本周回顾</button>
+          <button type="button" class="nav-pill" data-scroll-target="#ideas-panel">Idea与困惑</button>
+          <button type="button" class="nav-pill" data-scroll-target="#data-panel">数据管理</button>
+        </nav>
+
+        <section id="log-form" class="section-shell form-panel">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">三分钟科研记录</p>
+              <h2>今天的真实进展</h2>
+            </div>
+            <div class="demo-badge hidden" id="demo-indicator">示例模式</div>
+          </div>
+
+          <form id="entry-form" novalidate>
+            <div class="form-grid required-grid">
+              <label class="field">
+                <span>日期</span>
+                <input type="date" id="entry-date" name="date" required />
+              </label>
+
+              <label class="field wide">
+                <span>实际做了什么</span>
+                <textarea id="entry-action" name="action" rows="3" required placeholder="例如：阅读了第 2.3 节，整理了关键公式与方法差异。"></textarea>
+              </label>
+
+              <label class="field wide">
+                <span>Idea / 困惑速记</span>
+                <textarea id="entry-idea" name="idea" rows="3" required placeholder="例如：为什么这段方法并不能解释观测现象？"></textarea>
+              </label>
+
+              <label class="field wide">
+                <span>明日第一步</span>
+                <textarea id="entry-next-step" name="nextStep" rows="3" required placeholder="例如：先复现最小实验，再确认数据输入路径。"></textarea>
+              </label>
+            </div>
+
+            <details class="more-details">
+              <summary>展开详细记录</summary>
+              <div class="form-grid optional-grid">
+                <label class="field">
+                  <span>项目 / 主题</span>
+                  <input type="text" id="entry-project" name="project" placeholder="如：语义分割 / 文献综述" />
+                </label>
+
+                <label class="field">
+                  <span>今天的最小目标</span>
+                  <input type="text" id="entry-target" name="target" placeholder="例如：完成 1 轮模型复现" />
+                </label>
+
+                <label class="field wide">
+                  <span>留下的材料 / 证据</span>
+                  <textarea id="entry-evidence" name="evidence" rows="2" placeholder="例如：代码版本、笔记截图、实验日志、论文标注。"></textarea>
+                </label>
+
+                <label class="field">
+                  <span>工作类型</span>
+                  <select id="entry-work-type" name="workType">
+                    <option value="文献阅读">文献阅读</option>
+                    <option value="代码实验">代码实验</option>
+                    <option value="数据处理">数据处理</option>
+                    <option value="思考设计">思考设计</option>
+                    <option value="沟通讨论">沟通讨论</option>
+                    <option value="写作整理">写作整理</option>
+                    <option value="其他">其他</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>今日状态</span>
+                  <select id="entry-status" name="status">
+                    <option value="推进中">推进中</option>
+                    <option value="卡住">卡住</option>
+                    <option value="小收获">小收获</option>
+                    <option value="需恢复">需恢复</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>焦虑程度 1–5</span>
+                  <input id="entry-anxiety" name="anxiety" type="range" min="1" max="5" step="1" value="2" />
+                  <small id="anxiety-value">2 / 5</small>
+                </label>
+              </div>
+            </details>
+
+            <div class="form-actions">
+              <button type="submit" class="primary-btn">保存记录</button>
+              <button type="button" class="ghost-btn" id="cancel-edit-btn">取消编辑</button>
+            </div>
+            <p id="form-feedback" class="form-feedback" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section id="entries-panel" class="section-shell">
+          <div class="section-header compact">
+            <div>
+              <p class="eyebrow">我的记录</p>
+              <h2>记录列表</h2>
+            </div>
+          </div>
+          <div id="entries-list" class="entries-list" aria-live="polite"></div>
+        </section>
+
+        <section id="weekly-review" class="section-shell">
+          <div class="section-header compact">
+            <div>
+              <p class="eyebrow">本周回顾</p>
+              <h2>这周发生了什么</h2>
+            </div>
+            <div class="review-badges">
+              <span class="review-badge" id="week-day-count">0 天</span>
+              <span class="review-badge" id="demo-label">真实记录</span>
+            </div>
+          </div>
+
+          <div class="weekly-grid">
+            <article class="summary-card">
+              <h3>这周实际推进了什么？</h3>
+              <ul id="main-actions-list" class="summary-list"></ul>
+            </article>
+            <article class="summary-card">
+              <h3>目前卡在哪里？</h3>
+              <ul id="blockers-list" class="summary-list"></ul>
+            </article>
+            <article class="summary-card">
+              <h3>下一步最先做什么？</h3>
+              <ul id="next-step-list" class="summary-list"></ul>
+            </article>
+            <article class="summary-card">
+              <h3>留下的材料或证据</h3>
+              <ul id="evidence-list" class="summary-list"></ul>
+            </article>
+            <article class="summary-card">
+              <h3>Idea 汇总</h3>
+              <ul id="idea-summary-list" class="summary-list"></ul>
+            </article>
+            <article class="summary-card">
+              <h3>尚未解决的困惑</h3>
+              <ul id="confusion-list" class="summary-list"></ul>
+            </article>
+            <article class="summary-card wide-card">
+              <h3>工作类型分布</h3>
+              <div id="work-type-distribution" class="distribution-list" aria-label="工作类型分布"></div>
+            </article>
+            <article class="summary-card wide-card">
+              <h3>焦虑变化趋势（可选）</h3>
+              <div id="anxiety-trend" class="mini-bars" aria-label="焦虑趋势"></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="ideas-panel" class="section-shell">
+          <div class="section-header compact">
+            <div>
+              <p class="eyebrow">Idea 与 困惑</p>
+              <h2>灵感与卡点</h2>
+            </div>
+          </div>
+          <div id="idea-board" class="idea-board" aria-live="polite"></div>
+        </section>
+
+        <section id="data-panel" class="section-shell">
+          <div class="section-header compact">
+            <div>
+              <p class="eyebrow">数据管理</p>
+              <h2>本地保存与分享</h2>
+            </div>
+          </div>
+
+          <div class="data-actions">
+            <button type="button" class="primary-btn" id="load-demo-btn">一键载入示例数据</button>
+            <button type="button" class="secondary-btn" id="clear-demo-btn">一键清除示例数据</button>
+            <button type="button" class="ghost-btn" id="copy-report-btn">复制周报</button>
+            <button type="button" class="ghost-btn" id="export-csv-btn">导出 CSV</button>
+            <button type="button" class="danger-btn" id="clear-all-btn">清空个人数据</button>
+          </div>
+
+          <div class="share-box">
+            <div class="share-header">
+              <h3>文本版科研周报</h3>
+              <span>默认不包含焦虑程度和今日状态</span>
+            </div>
+            <textarea id="weekly-report-output" rows="12" readonly></textarea>
+          </div>
+
+          <p class="privacy-note">
+            数据只保存在本地浏览器，页面不会自动上传任何科研记录或日志。
+            生成的周报默认排除焦虑程度和今日状态，便于分享。
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
