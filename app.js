@@ -113,7 +113,7 @@ function loadEntries() {
 }
 
 function saveEntries(entries) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+  persistEntries(entries);
 }
 
 function ensureDateValue(dateString) {
@@ -228,9 +228,8 @@ function buildWeeklySummaryText({ entries, startDate, activeMode = 'personal' })
     lines.push('1. 本周还没有留下新的想法，先把工作过程写下来自然出现灵感。');
   }
   lines.push('');
-  if (activeMode === 'personal') {
-    lines.push('说明：本周记录只保存在本地浏览器，且不会自动上传。');
-  }
+  lines.push('说明：本周记录仅保存在本地浏览器，不会自动上传。');
+  lines.push('说明：生成的分享内容默认排除焦虑程度和今日状态。');
   return lines.join('\n');
 }
 
@@ -534,6 +533,14 @@ function clearDemoEntries() {
   refreshDashboard();
   const feedback = document.querySelector('#form-feedback');
   if (feedback) feedback.textContent = '示例数据已清除，不影响个人记录。';
+}
+
+function persistEntries(entries) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+  } catch (error) {
+    console.warn('本地保存失败。', error);
+  }
 }
 
 function clearAllPersonalData() {

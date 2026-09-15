@@ -36,6 +36,30 @@ body {
     var(--paper);
   color: var(--ink);
   min-height: 100vh;
+  position: relative;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(70px);
+  background: rgba(203, 188, 229, 0.18);
+  pointer-events: none;
+}
+
+body::before {
+  left: -150px;
+  top: 40px;
+}
+
+body::after {
+  right: -80px;
+  bottom: 40px;
+  background: rgba(223, 231, 199, 0.2);
 }
 
 button,
@@ -52,12 +76,13 @@ button {
 .page-shell {
   max-width: 1280px;
   margin: 28px auto;
-  background: rgba(250, 248, 251, 0.9);
+  background: rgba(250, 248, 251, 0.72);
   border: 1px solid rgba(92, 75, 101, 0.08);
   border-radius: 30px;
   box-shadow: 0 28px 52px rgba(53, 38, 57, 0.08);
   overflow: hidden;
   position: relative;
+  backdrop-filter: blur(8px);
 }
 
 .page-shell::before {
@@ -162,10 +187,24 @@ button {
   top: 10%;
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, rgba(196, 178, 221, 0.38), rgba(196, 178, 221, 0.12), transparent 65%);
+  background: radial-gradient(circle, rgba(194, 176, 228, 0.48), rgba(194, 176, 228, 0.12), transparent 65%);
   border-radius: 45% 55% 50% 50%;
   filter: blur(10px);
   transform: rotate(20deg);
+  pointer-events: none;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  right: 10%;
+  top: 18%;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.72), rgba(203,188,229,0.20) 28%, transparent 68%);
+  border-radius: 58% 42% 64% 36% / 54% 43% 57% 46%;
+  transform: rotate(18deg);
+  opacity: 0.8;
   pointer-events: none;
 }
 
