@@ -198,7 +198,7 @@ function summarizeEntries(entries, referenceDate = null) {
 function buildWeeklySummaryText({ entries, startDate, activeMode = 'personal' }) {
   const summary = summarizeEntries(entries, startDate || toLocalDateInputValue());
   const lines = [];
-  lines.push('科研生长日志：本周回顾');
+  lines.push('研途记录：本周回顾');
   lines.push('');
   lines.push('1. 本周实际推进了什么？');
   if (summary.mainActions.length) {
