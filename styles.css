@@ -37,6 +37,7 @@ body {
   color: var(--ink);
   min-height: 100vh;
   position: relative;
+  overflow-x: clip;
 }
 
 body::before,
@@ -212,6 +213,10 @@ button {
   padding: 30px 10px 12px 8px;
   position: relative;
   z-index: 1;
+}
+
+.hero > * {
+  min-width: 0;
 }
 
 .pill,
@@ -782,8 +787,13 @@ h2 {
   }
 
   .topbar {
+    grid-template-columns: auto 1fr;
     padding-left: 12px;
     padding-right: 12px;
+  }
+
+  .window-actions {
+    display: none;
   }
 
   .address-bar {
@@ -794,6 +804,8 @@ h2 {
 
   .app {
     padding: 14px 12px 24px;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .hero,
@@ -804,6 +816,8 @@ h2 {
   #data-panel {
     padding-left: 14px;
     padding-right: 14px;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .form-grid {
@@ -825,7 +839,10 @@ h2 {
   }
 
   .hero h1 {
-    font-size: 4.5rem;
+    font-size: clamp(2.8rem, 14vw, 3.35rem);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+    overflow-wrap: anywhere;
   }
 
   .hero-copy {
@@ -834,6 +851,22 @@ h2 {
 
   .mini-card {
     min-height: 108px;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .hero-cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    min-height: auto;
+    padding: 16px 0;
+    width: 100%;
+  }
+
+  .hero p,
+  .mini-card,
+  .nav-pill {
+    overflow-wrap: anywhere;
   }
 
   .share-header {

@@ -21,7 +21,7 @@ python -m http.server 5500
 然后访问：
 
 ```text
-http://localhost:5500
+http://127.0.0.1:5500/
 ```
 
 ## 数据说明
@@ -35,6 +35,12 @@ http://localhost:5500
 - `index.html`：页面结构
 - `styles.css`：视觉样式与响应式布局
 - `app.js`：数据处理、保存逻辑和交互逻辑
+
+## GitHub Pages 发布
+
+项目是纯静态网页，根目录已有 `index.html`，CSS 与 JavaScript 均通过相对路径加载，不依赖后端服务。
+
+准备发布时，可以在 GitHub 仓库的 **Settings → Pages** 中选择 **Deploy from a branch**，再选择包含这些文件的分支和根目录。保存后等待 GitHub Pages 生成访问地址即可。本项目不会把浏览器 `localStorage` 中的个人记录写入源码或上传到 GitHub；发布前仍建议检查提交内容，确认只包含虚拟示例数据。
 
 ## .gitignore
 

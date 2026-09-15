@@ -4,9 +4,9 @@ const SAMPLE_DAY_ENTRIES = [
   {
     id: 'sample-1',
     date: '2026-09-08',
-    action: '阅读一篇关于图注意力机制的论文，并整理了方法与实验部分的关键差异。',
-    idea: '注意力不是“看起来重要”，而是让模型在特征空间中提升信息筛选能力。',
-    nextStep: '把论文中的关键概念用自己的语言复述一遍，并标出最值得验证的点。',
+    action: '阅读一篇关于图注意力机制的论文，标注了方法与实验部分。',
+    idea: '还不确定注意力权重与特征重要性能否直接对应。',
+    nextStep: '把论文中的核心概念用自己的语言复述一遍。',
     project: '文献综述',
     target: '完成 1 篇文献摘要',
     evidence: '论文高亮、读书笔记和标注截图',
@@ -18,13 +18,13 @@ const SAMPLE_DAY_ENTRIES = [
   {
     id: 'sample-2',
     date: '2026-09-09',
-    action: '确认了实验环境依赖，并记录了运行脚本的最小依赖列表。',
-    idea: '环境问题常常比算法问题更难排查，需要先把最小复现条件固定住。',
-    nextStep: '尝试在最小数据集上跑一次单步验证，确认工具链可用。',
-    project: '实验平台',
-    target: '构建最小运行环境',
-    evidence: '环境说明、requirements 和日志',
-    workType: '代码实验',
+    action: '用自己的语言复述了图注意力的核心概念，并画出一张信息流草图。',
+    idea: '注意力更像特征筛选机制，不能简单等同于“模型认为重要”。',
+    nextStep: '根据复述结果列出实现所需的最小环境依赖。',
+    project: '概念学习',
+    target: '理解一个核心概念',
+    evidence: '概念卡片和信息流草图',
+    workType: '思考设计',
     status: '小收获',
     anxiety: 2,
     isDemo: true,
@@ -32,11 +32,25 @@ const SAMPLE_DAY_ENTRIES = [
   {
     id: 'sample-3',
     date: '2026-09-10',
-    action: '排查代码报错，定位到数据路径和特征维度不对齐的问题。',
+    action: '配置实验环境，确认了运行脚本所需的最小依赖与版本。',
+    idea: '固定最小复现条件，后续排错会更容易定位。',
+    nextStep: '在最小数据集上运行一次单步验证。',
+    project: '实验平台',
+    target: '构建最小运行环境',
+    evidence: '环境说明、依赖清单和安装日志',
+    workType: '代码实验',
+    status: '推进中',
+    anxiety: 3,
+    isDemo: true,
+  },
+  {
+    id: 'sample-4',
+    date: '2026-09-11',
+    action: '排查运行报错，定位到数据路径和特征维度不对齐的问题。',
     idea: '可能是输入格式与前处理脚本版本不一致，导致列名和维度不匹配。',
-    nextStep: '先输出一个最小错误样本，再逐步比对处理脚本。',
+    nextStep: '输出一个最小错误样本，再逐步比对处理脚本。',
     project: '模型训练',
-    target: '修正输入数据流',
+    target: '定位输入数据流问题',
     evidence: '报错日志、代码 diff 和中间输出',
     workType: '代码实验',
     status: '卡住',
@@ -44,29 +58,15 @@ const SAMPLE_DAY_ENTRIES = [
     isDemo: true,
   },
   {
-    id: 'sample-4',
-    date: '2026-09-11',
-    action: '完成了第一次实验运行，整理出损失曲线和训练日志。',
-    idea: '模型起步是正常的，关键问题在于是否需要先做更稳定的基线对照。',
-    nextStep: '拿出 3 组最小对照设置，确认当前表现是否真正有效。',
-    project: '实验分析',
-    target: '跑通第一轮基线',
-    evidence: '训练日志与损失截图',
-    workType: '数据处理',
-    status: '推进中',
-    anxiety: 3,
-    isDemo: true,
-  },
-  {
     id: 'sample-5',
     date: '2026-09-12',
-    action: '梳理了实验结果，开始判断哪些结论需要重新验证。',
-    idea: '不必急着解释“为什么不明显”，先确认是否是评估指标选错。',
-    nextStep: '把结果和基线对照表做成 1 页图，判断下一步需要收敛还是改设计。',
-    project: '结果评估',
-    target: '确认有效指标',
-    evidence: '评估表格和图表草图',
-    workType: '思考设计',
+    action: '运行了第一次最小实验，保存了损失曲线和完整训练日志。',
+    idea: '当前结果只是流程验证，不能描述成真实科研结论。',
+    nextStep: '整理基线对照表，再检查评估指标是否合适。',
+    project: '实验运行',
+    target: '跑通第一轮最小实验',
+    evidence: '训练日志与损失曲线截图',
+    workType: '代码实验',
     status: '推进中',
     anxiety: 2,
     isDemo: true,
@@ -74,29 +74,29 @@ const SAMPLE_DAY_ENTRIES = [
   {
     id: 'sample-6',
     date: '2026-09-13',
-    action: '与师兄讨论后，明确下一步应当集中在数据质量与特征设计上。',
-    idea: '问题不在于模型“没学会”，而在于当前输入对任务目标的表达不够稳定。',
-    nextStep: '把讨论整理成一个研究问题列表，并选择最关键的 1 个先试。',
-    project: '导师讨论',
-    target: '明确下一步方向',
-    evidence: '会议纪要和问题清单',
-    workType: '沟通讨论',
-    status: '小收获',
-    anxiety: 1,
+    action: '分析了示例实验输出，整理出需要继续验证的现象与异常点。',
+    idea: '不应急着解释差异，先确认评估指标和基线设置是否一致。',
+    nextStep: '把结果与基线做成一页对照表，带着问题与师兄讨论。',
+    project: '结果分析',
+    target: '识别下一轮验证重点',
+    evidence: '结果表格和图表草稿',
+    workType: '数据处理',
+    status: '推进中',
+    anxiety: 2,
     isDemo: true,
   },
   {
     id: 'sample-7',
     date: '2026-09-14',
-    action: '整理周报并写下下一周最优先推进的实验计划。',
-    idea: '科研推进不是“一次大结果”，而是把模糊问题拆成可验证的最小行动。',
-    nextStep: '从单个最小实验开始，确保下一天可立即执行。',
-    project: '周报整理',
-    target: '完成周报和计划',
-    evidence: '周报草稿和任务列表',
-    workType: '写作整理',
-    status: '推进中',
-    anxiety: 2,
+    action: '与师兄讨论了当前异常点，并把下一步收敛为一个最小对照实验。',
+    idea: '先验证数据质量与特征设计，再讨论是否调整模型结构。',
+    nextStep: '按讨论记录准备最小对照实验的输入数据。',
+    project: '下一步讨论',
+    target: '明确最先执行的动作',
+    evidence: '讨论纪要和问题清单',
+    workType: '沟通讨论',
+    status: '小收获',
+    anxiety: 1,
     isDemo: true,
   },
 ];
@@ -116,8 +116,15 @@ function saveEntries(entries) {
   persistEntries(entries);
 }
 
+function toLocalDateInputValue(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
 function ensureDateValue(dateString) {
-  if (!dateString) return new Date().toISOString().slice(0, 10);
+  if (!dateString) return toLocalDateInputValue();
   return dateString;
 }
 
@@ -189,7 +196,7 @@ function summarizeEntries(entries, referenceDate = null) {
 }
 
 function buildWeeklySummaryText({ entries, startDate, activeMode = 'personal' }) {
-  const summary = summarizeEntries(entries, startDate || new Date().toISOString().slice(0, 10));
+  const summary = summarizeEntries(entries, startDate || toLocalDateInputValue());
   const lines = [];
   lines.push('科研生长日志：本周回顾');
   lines.push('');
@@ -352,12 +359,12 @@ function renderWeeklyReview(entries) {
 
   const anxietyTarget = document.querySelector('#anxiety-trend');
   if (anxietyTarget) {
-    const values = entries.map((entry) => Number(entry.anxiety || 0)).filter((value) => Number.isFinite(value));
+    const values = summary.entries.map((entry) => Number(entry.anxiety || 0)).filter((value) => Number.isFinite(value));
     const maxValue = Math.max(1, ...values, 5);
     anxietyTarget.innerHTML = values.length
       ? values.map((value, index) => {
           const barHeight = Math.max(18, (value / maxValue) * 100);
-          const date = new Date(entries[index].date);
+          const date = new Date(`${summary.entries[index].date}T00:00:00`);
           const label = new Intl.DateTimeFormat('zh-CN', { month: 'numeric', day: 'numeric' }).format(date);
           return `<div class="mini-bars-bar" style="height:${barHeight}%"><span>${label}</span></div>`;
         }).join('')
@@ -448,7 +455,7 @@ function fillFormForEdit(entryId) {
 
 function resetForm() {
   document.querySelector('#entry-form').reset();
-  document.querySelector('#entry-date').value = new Date().toISOString().slice(0, 10);
+  document.querySelector('#entry-date').value = toLocalDateInputValue();
   document.querySelector('#entry-anxiety').value = '2';
   document.querySelector('#anxiety-value').textContent = '2 / 5';
   delete document.querySelector('#entry-form').dataset.editId;
@@ -481,7 +488,7 @@ function handleFormSubmit(event) {
     const entries = loadEntries();
     const index = entries.findIndex((entry) => entry.id === cleaned.id);
     if (index >= 0) {
-      entries[index] = { ...entries[index], ...cleaned };
+      entries[index] = { ...entries[index], ...cleaned, isDemo: entries[index].isDemo };
     } else {
       entries.push(cleaned);
     }
@@ -519,7 +526,16 @@ function loadDemoEntries() {
     return;
   }
 
-  const demoEntries = SAMPLE_DAY_ENTRIES.map((entry) => ({ ...entry, id: `demo-${Date.now()}-${Math.random().toString(16).slice(2)}` }));
+  const today = new Date();
+  const demoEntries = SAMPLE_DAY_ENTRIES.map((entry, index) => {
+    const demoDate = new Date(today);
+    demoDate.setDate(today.getDate() - (SAMPLE_DAY_ENTRIES.length - 1 - index));
+    return {
+      ...entry,
+      date: toLocalDateInputValue(demoDate),
+      id: `demo-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+    };
+  });
   const nextEntries = [...entries, ...demoEntries];
   saveEntries(nextEntries);
   refreshDashboard();
@@ -625,7 +641,7 @@ function bindEvents() {
 function init() {
   const dateField = document.querySelector('#entry-date');
   if (dateField && !dateField.value) {
-    dateField.value = new Date().toISOString().slice(0, 10);
+    dateField.value = toLocalDateInputValue();
   }
 
   const anxietyInput = document.querySelector('#entry-anxiety');
